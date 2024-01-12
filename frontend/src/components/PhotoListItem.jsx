@@ -7,7 +7,7 @@ import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
   /* Insert React */
-  const { username, imageSource, id, location, profile } = props;
+  const { username, imageSource, id, location, profile } = props.photo;
   return (
     <div className="photo-list-item">
       <img src={imageSource} alt={`Photo by ${username}`} />
