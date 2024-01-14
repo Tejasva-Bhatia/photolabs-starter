@@ -10,6 +10,8 @@ const PhotoListItem = (props) => {
   /* Insert React */
   const { user,location,urls} = props.photo;
   const { name, profile } = user;
+
+  
   return (
     <div className="photo-list__item">
       <PhotoFavButton photo={props.photo} favoritedPhotos={props.favoritedPhotos}
