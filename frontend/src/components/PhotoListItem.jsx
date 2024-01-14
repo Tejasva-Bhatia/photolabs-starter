@@ -11,9 +11,13 @@ const PhotoListItem = (props) => {
   const { user,location,urls} = props.photo;
   const { name, profile } = user;
 
-  
+  const handlePhotoClick = () => {
+    // Call the toggleModal function to open the modal
+    props.toggleModal();
+  };
+
   return (
-    <div className="photo-list__item">
+    <div className="photo-list__item" onClick={handlePhotoClick}>
       <PhotoFavButton photo={props.photo} favoritedPhotos={props.favoritedPhotos}
         setFavoritedPhotos={props.setFavoritedPhotos} />
       <img className="photo-list__image" src={urls.full} alt={`Photo by ${name}`} />
