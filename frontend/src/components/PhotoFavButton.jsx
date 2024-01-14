@@ -3,16 +3,26 @@ import React, { useCallback, useState } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton() {
+function PhotoFavButton(props) {
   const [isActive, setIsActive] = useState(false);
-  const handleClick= ()=>{
-      setIsActive(!isActive);
+  const handleClick = () => {
+
+    const updatedFavoritedPhotos = isActive
+      ? props.favoritedPhotos.filter(photo => photo.id !== props.photo.id)
+      : [...props.favoritedPhotos, props.photo];
+
+      console.log('Updated Favorited Photos:', updatedFavoritedPhotos);
+    // Update the list of favorited photos
+    props.setFavoritedPhotos(updatedFavoritedPhotos);
+
+    setIsActive(!isActive);
   }
+
   return (
-    <div className= "photo-list__fav-icon" onClick={handleClick} >
+    <div className="photo-list__fav-icon" onClick={handleClick} >
       <div className="photo-list__fav-icon-svg"  >
         {/* Insert React */}
-        <FavIcon selected={isActive}/>
+        <FavIcon selected={isActive} />
       </div>
     </div>
   );

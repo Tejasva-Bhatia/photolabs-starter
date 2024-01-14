@@ -5,11 +5,17 @@ import PhotoListItem from "./PhotoListItem";
 import photos from "mocks/photos";
 
 
-const PhotoList = () => {
+const PhotoList = (props) => {
+  const { favoritedPhotos, setFavoritedPhotos } = props;
+
   return (
     <ul className="photo-list">
       {/* Insert React */}
-      { photos.map(photo=><PhotoListItem key={photo.id} photo={photo}/>)
+      {photos.map(photo => <PhotoListItem
+        key={photo.id}
+        photo={photo}
+        favoritedPhotos={favoritedPhotos}
+        setFavoritedPhotos={setFavoritedPhotos} />)
       }
     </ul>
   );

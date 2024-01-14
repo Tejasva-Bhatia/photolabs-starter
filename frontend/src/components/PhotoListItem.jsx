@@ -12,7 +12,8 @@ const PhotoListItem = (props) => {
   const { name, profile } = user;
   return (
     <div className="photo-list__item">
-      <PhotoFavButton />
+      <PhotoFavButton photo={props.photo} favoritedPhotos={props.favoritedPhotos}
+        setFavoritedPhotos={props.setFavoritedPhotos} />
       <img className="photo-list__image" src={urls.full} alt={`Photo by ${name}`} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={profile} alt={`Photo of ${name}`} />
