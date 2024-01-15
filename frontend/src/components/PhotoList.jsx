@@ -17,6 +17,7 @@ const PhotoList = (props) => {
         favoritedPhotos={favoritedPhotos}
         setFavoritedPhotos={setFavoritedPhotos} 
         toggleModal={toggleModal}
+        selectedPhoto={props.selectedPhoto}
         />)
       }
     </ul>

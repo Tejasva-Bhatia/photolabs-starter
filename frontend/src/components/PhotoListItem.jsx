@@ -13,7 +13,7 @@ const PhotoListItem = (props) => {
 
   const handlePhotoClick = () => {
     // Call the toggleModal function to open the modal
-    props.toggleModal();
+    props.toggleModal(props.photo);
   };
 
   return (
