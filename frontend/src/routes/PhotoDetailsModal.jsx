@@ -5,7 +5,7 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto }) => {
+const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto, favoritedPhotos, setFavoritedPhotos }) => {
 
   console.log("Selected Photo Details:", selectedPhoto);
   const handleCloseClick = () => {
@@ -19,8 +19,10 @@ const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto }) => {
       </button>
       <div className="photo-details-modal__top-bar">
         <div>
-        <PhotoFavButton  />
-          <img className="photo-details-modal__image" src={selectedPhoto.urls.regular}></img>
+          <PhotoFavButton photo={selectedPhoto} 
+            favoritedPhotos={favoritedPhotos} 
+            setFavoritedPhotos={setFavoritedPhotos}/>
+          <img className="photo-details-modal__image" src={selectedPhoto.urls.full}></img>
           <div className="photo-details-modal__header">
             <img className="photo-details-modal__photographer-profile" src={selectedPhoto.user.profile}></img>
             <div className="photo-details-modal__photographer-details">
@@ -31,13 +33,14 @@ const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto }) => {
             </div>
           </div>
         </div>
+        
       </div>
 
-      <div className="photo-details-modal__header">
-        Similar Photos
-      </div>
 
       <div className="photo-details-modal__images">
+        <div className="photo-details-modal__header">
+          Similar Photos
+        </div>
         <PhotoList
           photoData={photos.filter(photo => photo.id !== selectedPhoto.id)}
         />
