@@ -17,7 +17,7 @@ const App = () => {
     <div className="App">
 
       <HomeRoute toggleModal={toggleModal}/>
-      {isModalVisible && <PhotoDetailsModal />}
+      {isModalVisible && <PhotoDetailsModal toggleModal={toggleModal} />}
     </div>
   );
 };
