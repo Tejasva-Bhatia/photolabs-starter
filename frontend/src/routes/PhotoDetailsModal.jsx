@@ -42,7 +42,7 @@ const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto, favoritedPhotos, 
           Similar Photos
         </div>
         <PhotoList
-          photoData={photos.filter(photo => photo.id !== selectedPhoto.id)}
+          photoData={selectedPhoto.similar_photos || []}
         />
       </div>
 
