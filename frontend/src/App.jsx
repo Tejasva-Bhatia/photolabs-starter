@@ -2,19 +2,19 @@ import React from 'react';
 import { useState } from 'react';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import useApplicationData from 'hooks/useApplicationData';
 import './App.scss';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null); {/* Add selectedPhoto state */}
-  const [favoritedPhotos, setFavoritedPhotos] = useState([]);
+  const {
+    state,
+    toggleModal, 
+    setFavoritedPhotos, 
+  } = useApplicationData();
 
-  const toggleModal = (photo) => {
-    setIsModalVisible(!isModalVisible);
-    setSelectedPhoto(photo);
-  };
+  const { isModalVisible, selectedPhoto, favoritedPhotos } = state;
 
   return (
     <div className="App">

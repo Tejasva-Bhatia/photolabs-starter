@@ -3,6 +3,7 @@ import { useState } from 'react';
 import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
+import useApplicationData from '../hooks/useApplicationData';
 
 const HomeRoute = ({ toggleModal, selectedPhoto, favoritedPhotos, setFavoritedPhotos }) => {
   
@@ -10,7 +11,10 @@ const HomeRoute = ({ toggleModal, selectedPhoto, favoritedPhotos, setFavoritedPh
     <div className="home-route">
       {/* Insert React */}
       <TopNavigation favoritedPhotos={favoritedPhotos} />
-      <PhotoList favoritedPhotos={favoritedPhotos} setFavoritedPhotos={setFavoritedPhotos} toggleModal={toggleModal} 
+      <PhotoList
+      favoritedPhotos={favoritedPhotos} 
+      setFavoritedPhotos={setFavoritedPhotos} 
+      toggleModal={toggleModal} 
       selectedPhoto={selectedPhoto}/>
     </div>
   );
