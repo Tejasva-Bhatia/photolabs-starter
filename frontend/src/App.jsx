@@ -9,6 +9,7 @@ const App = () => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null); {/* Add selectedPhoto state */}
+  const [favoritedPhotos, setFavoritedPhotos] = useState([]);
 
   const toggleModal = (photo) => {
     setIsModalVisible(!isModalVisible);
@@ -18,8 +19,9 @@ const App = () => {
   return (
     <div className="App">
 
-      <HomeRoute toggleModal={toggleModal} selectedPhoto={selectedPhoto}/>
-      {isModalVisible && <PhotoDetailsModal closeDisplayModal={toggleModal} selectedPhoto={selectedPhoto} />}
+      <HomeRoute toggleModal={toggleModal} selectedPhoto={selectedPhoto} favoritedPhotos={favoritedPhotos} setFavoritedPhotos={setFavoritedPhotos}/>
+      {isModalVisible && <PhotoDetailsModal closeDisplayModal={toggleModal} selectedPhoto={selectedPhoto} favoritedPhotos={favoritedPhotos}
+          setFavoritedPhotos={setFavoritedPhotos} />}
     </div>
   );
 };

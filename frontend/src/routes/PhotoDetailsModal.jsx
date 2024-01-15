@@ -12,6 +12,8 @@ const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto, favoritedPhotos, 
     closeDisplayModal();
   };
 
+  
+
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={handleCloseClick}>
@@ -19,9 +21,10 @@ const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto, favoritedPhotos, 
       </button>
       <div className="photo-details-modal__top-bar">
         <div>
-          <PhotoFavButton photo={selectedPhoto} 
-            favoritedPhotos={favoritedPhotos} 
-            setFavoritedPhotos={setFavoritedPhotos}/>
+          <PhotoFavButton
+            photo={selectedPhoto}
+            favoritedPhotos={favoritedPhotos}
+            setFavoritedPhotos={setFavoritedPhotos} />
           <img className="photo-details-modal__image" src={selectedPhoto.urls.full}></img>
           <div className="photo-details-modal__header">
             <img className="photo-details-modal__photographer-profile" src={selectedPhoto.user.profile}></img>
@@ -33,7 +36,7 @@ const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto, favoritedPhotos, 
             </div>
           </div>
         </div>
-        
+
       </div>
 
 

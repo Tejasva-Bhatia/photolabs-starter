@@ -4,8 +4,8 @@ import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
-const HomeRoute = ({ toggleModal, selectedPhoto }) => {
-  const [favoritedPhotos, setFavoritedPhotos] = useState([]);
+const HomeRoute = ({ toggleModal, selectedPhoto, favoritedPhotos, setFavoritedPhotos }) => {
+  
   return (
     <div className="home-route">
       {/* Insert React */}
