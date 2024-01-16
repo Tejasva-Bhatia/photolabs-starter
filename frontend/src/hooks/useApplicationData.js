@@ -65,7 +65,7 @@ const useApplicationData = () => {
     fetch("/api/photos")
       .then((response) => response.json())
       .then((data) => {
-        dispatch({ type: 'SET_PHOTO_DATA', payload: data });
+        dispatch({ type: SET_PHOTO_DATA, payload: data });
       })
       .catch((error) => console.error('Error fetching photo data:', error));
   }, []);
