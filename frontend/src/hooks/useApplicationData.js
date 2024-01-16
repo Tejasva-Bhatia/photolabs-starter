@@ -64,7 +64,18 @@ const useApplicationData = () => {
   };
 
   const setTopicPhotos = (topicId) => {
-    dispatch({ type: SET_TOPIC_PHOTOS, payload: topicId });
+    // Fetch topic photos when a topic is selected
+    fetch(`/api/topics/photos/${topicId}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => dispatch({ type: SET_PHOTO_DATA, payload: data }))
+      .catch((error) => {
+        console.error(`Error fetching topic photos: ${error.message}`);
+      });
   };
 
   //Fetch using useEffect
@@ -87,22 +98,7 @@ const useApplicationData = () => {
       .catch((error) => console.error('Error fetching topic data:', error));
   }, []);
 
-  useEffect(() => {
-    // Fetch topic photos when a topic is selected
-    if (state.selectedTopic) {
-      fetch(`/api/topics/photos/${state.selectedTopic}`)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then((data) => setTopicPhotos(data))
-        .catch((error) => {
-          console.error(`Error fetching topic photos: ${error.message}`);
-        });
-    }
-  }, [state.selectedTopic]);
+  
 
   // Return the state and actions
   return {
