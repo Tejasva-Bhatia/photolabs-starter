@@ -24,7 +24,7 @@ const App = () => {
       <HomeRoute toggleModal={toggleModal} selectedPhoto={selectedPhoto} favoritedPhotos={favoritedPhotos} setFavoritedPhotos={setFavoritedPhotos}
       topics={topics} photos={photos}/>
       {isModalVisible && <PhotoDetailsModal closeDisplayModal={toggleModal} selectedPhoto={selectedPhoto} favoritedPhotos={favoritedPhotos}
-          setFavoritedPhotos={setFavoritedPhotos} photos={photos} />}
+          setFavoritedPhotos={setFavoritedPhotos} />}
     </div>
   );
 };
