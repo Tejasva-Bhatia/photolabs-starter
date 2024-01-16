@@ -1,5 +1,4 @@
 import React from 'react';
-import photos from 'mocks/photos';
 import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 import '../styles/PhotoDetailsModal.scss'
@@ -11,7 +10,7 @@ const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto, favoritedPhotos, 
     closeDisplayModal();
   };
 
-  
+ 
 
   return (
     <div className="photo-details-modal">
@@ -44,7 +43,7 @@ const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto, favoritedPhotos, 
           Similar Photos
         </div>
         <PhotoList
-          favoritedPhotos={favoritedPhotos} setFavoritedPhotos={setFavoritedPhotos} toggleModal={() => {}} selectedPhoto={selectedPhoto} photos={selectedPhoto.similar_photos || []}
+          favoritedPhotos={favoritedPhotos} setFavoritedPhotos={setFavoritedPhotos} toggleModal={() => {}} selectedPhoto={selectedPhoto} photos={Object.values(selectedPhoto.similar_photos || {})}
         />
       </div>
 
