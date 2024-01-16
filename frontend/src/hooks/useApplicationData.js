@@ -13,6 +13,14 @@ const useApplicationData = () => {
     setSelectedPhoto(photo);
   };
 
+  const toggleFavorite = (photo) => {
+    const updatedFavoritedPhotos = favoritedPhotos.some((favPhoto) => favPhoto.id === photo.id)
+      ? favoritedPhotos.filter((favPhoto) => favPhoto.id !== photo.id)
+      : [...favoritedPhotos, photo];
+
+    setFavoritedPhotos(updatedFavoritedPhotos);
+  };
+
   
   // Return the state and actions
   return {
@@ -23,6 +31,7 @@ const useApplicationData = () => {
     },
     toggleModal,
     setFavoritedPhotos,
+    toggleFavorite,
   };
 };
 
