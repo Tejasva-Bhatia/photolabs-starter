@@ -7,6 +7,7 @@ const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE';
 const SET_FAVORITED_PHOTOS = 'SET_FAVORITED_PHOTOS';
 const SET_TOPIC_DATA = 'SET_TOPIC_DATA';
 const SET_PHOTO_DATA = 'SET_PHOTO_DATA';
+const SET_TOPIC_PHOTOS = 'SET_TOPIC_PHOTOS';
 
 const initialState = {
   isModalVisible: false,
@@ -34,6 +35,8 @@ const reducer = (state, action) => {
       return { ...state, topicData: action.payload };
     case SET_PHOTO_DATA:
       return { ...state, photoData: action.payload };
+    case SET_TOPIC_PHOTOS:
+      return { ...state, topicPhotos: action.payload };
     default:
       return state;
   }
@@ -61,6 +64,10 @@ const useApplicationData = () => {
     dispatch({ type: SET_FAVORITED_PHOTOS, payload: photos });
   };
 
+  const setTopicPhotos = (topicId) => {
+    dispatch({ type: SET_TOPIC_PHOTOS, payload: topicId  });
+  };
+
   useEffect(() => {
     fetch("/api/photos")
       .then((response) => response.json())
@@ -80,6 +87,23 @@ const useApplicationData = () => {
       .catch((error) => console.error('Error fetching topic data:', error));
   }, []);
 
+  useEffect(() => {
+    // Fetch topic photos when a topic is selected
+    if (state.selectedTopic) {
+      fetch(`/api/topics/photos/${state.selectedTopic}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => setTopicPhotos(data))
+        .catch((error) => {
+          console.error(`Error fetching topic photos: ${error.message}`);
+        });
+    }
+  }, [state.selectedTopic]);
+
   // Return the state and actions
   return {
     state,
@@ -87,6 +111,7 @@ const useApplicationData = () => {
     setSelectedPhoto,
     toggleFavorite,
     setFavoritedPhotos, // Provide the setFavoritedPhotos function
+    setTopicPhotos,
   };
 };
 
