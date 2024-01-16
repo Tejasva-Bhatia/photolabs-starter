@@ -1,10 +1,20 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 
 // Define action types
 const TOGGLE_MODAL = 'TOGGLE_MODAL';
 const SET_SELECTED_PHOTO = 'SET_SELECTED_PHOTO';
 const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE';
-const SET_FAVORITED_PHOTOS = 'SET_FAVORITED_PHOTOS'; 
+const SET_FAVORITED_PHOTOS = 'SET_FAVORITED_PHOTOS';
+const SET_TOPIC_DATA = 'SET_TOPIC_DATA';
+const SET_PHOTO_DATA = 'SET_PHOTO_DATA';
+
+const initialState = {
+  isModalVisible: false,
+  selectedPhoto: null,
+  favoritedPhotos: [],
+  topicData: [],
+  photoData: [],
+};
 
 // Reducer function
 const reducer = (state, action) => {
@@ -20,6 +30,10 @@ const reducer = (state, action) => {
       return { ...state, favoritedPhotos: updatedFavoritedPhotos };
     case SET_FAVORITED_PHOTOS: // New case to handle setting favoritedPhotos
       return { ...state, favoritedPhotos: action.payload };
+    case SET_TOPIC_DATA:
+      return { ...state, topicData: action.payload };
+    case SET_PHOTO_DATA:
+      return { ...state, photoData: action.payload };
     default:
       return state;
   }
@@ -27,11 +41,7 @@ const reducer = (state, action) => {
 
 const useApplicationData = () => {
   // State initialization using useReducer
-  const [state, dispatch] = useReducer(reducer, {
-    isModalVisible: false,
-    selectedPhoto: null,
-    favoritedPhotos: [],
-  });
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   // Actions
   const toggleModal = (photo) => {
@@ -50,6 +60,25 @@ const useApplicationData = () => {
   const setFavoritedPhotos = (photos) => {
     dispatch({ type: SET_FAVORITED_PHOTOS, payload: photos });
   };
+
+  useEffect(() => {
+    fetch("/api/photos")
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({ type: 'SET_PHOTO_DATA', payload: data });
+      })
+      .catch((error) => console.error('Error fetching photo data:', error));
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/topics")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Fetched topic data:', data);
+        dispatch({ type: SET_TOPIC_DATA, payload: data });
+      })
+      .catch((error) => console.error('Error fetching topic data:', error));
+  }, []);
 
   // Return the state and actions
   return {
