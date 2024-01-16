@@ -4,11 +4,14 @@ import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
 
-const TopicList = ({topics,setTopicPhotos}) => {
+const TopicList = ({ topics, setTopicPhotos }) => {
   return (
     <div className="top-nav-bar__topic-list">
-      {/* Insert React */}
-      {topics.map(topic=> <TopicListItem key={topic.id}  topic={topic} setTopicPhotos={setTopicPhotos}/>)}
+      {topics.map(topic => <TopicListItem
+        key={topic.id}
+        topic={topic}
+        setTopicPhotos={setTopicPhotos}
+      />)}
     </div>
   );
 };

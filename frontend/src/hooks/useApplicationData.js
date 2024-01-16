@@ -9,6 +9,7 @@ const SET_TOPIC_DATA = 'SET_TOPIC_DATA';
 const SET_PHOTO_DATA = 'SET_PHOTO_DATA';
 const SET_TOPIC_PHOTOS = 'SET_TOPIC_PHOTOS';
 
+//Initial States
 const initialState = {
   isModalVisible: false,
   selectedPhoto: null,
@@ -43,7 +44,6 @@ const reducer = (state, action) => {
 };
 
 const useApplicationData = () => {
-  // State initialization using useReducer
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // Actions
@@ -59,15 +59,15 @@ const useApplicationData = () => {
     dispatch({ type: TOGGLE_FAVORITE, payload: photo });
   };
 
-  // New action to set favoritedPhotos
   const setFavoritedPhotos = (photos) => {
     dispatch({ type: SET_FAVORITED_PHOTOS, payload: photos });
   };
 
   const setTopicPhotos = (topicId) => {
-    dispatch({ type: SET_TOPIC_PHOTOS, payload: topicId  });
+    dispatch({ type: SET_TOPIC_PHOTOS, payload: topicId });
   };
 
+  //Fetch using useEffect
   useEffect(() => {
     fetch("/api/photos")
       .then((response) => response.json())
@@ -110,7 +110,7 @@ const useApplicationData = () => {
     toggleModal,
     setSelectedPhoto,
     toggleFavorite,
-    setFavoritedPhotos, // Provide the setFavoritedPhotos function
+    setFavoritedPhotos,
     setTopicPhotos,
   };
 };

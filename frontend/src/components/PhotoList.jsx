@@ -1,5 +1,4 @@
 import React from "react";
-
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
@@ -14,11 +13,11 @@ const PhotoList = (props) => {
         key={photo.id}
         photo={photo}
         favoritedPhotos={favoritedPhotos}
-        setFavoritedPhotos={setFavoritedPhotos} 
+        setFavoritedPhotos={setFavoritedPhotos}
         toggleModal={toggleModal}
         selectedPhoto={props.selectedPhoto}
         toggleFavorite={toggleFavorite}
-        />)
+      />)
       }
     </ul>
   );

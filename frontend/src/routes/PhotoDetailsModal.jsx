@@ -10,7 +10,7 @@ const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto, favoritedPhotos, 
     closeDisplayModal();
   };
 
- 
+
 
   return (
     <div className="photo-details-modal">
@@ -34,20 +34,19 @@ const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto, favoritedPhotos, 
             </div>
           </div>
         </div>
-
       </div>
-
-
       <div className="photo-details-modal__images">
         <div className="photo-details-modal__header">
           Similar Photos
         </div>
         <PhotoList
-          favoritedPhotos={favoritedPhotos} setFavoritedPhotos={setFavoritedPhotos} toggleModal={() => {}} selectedPhoto={selectedPhoto} photos={Object.values(selectedPhoto.similar_photos || {})}
+          favoritedPhotos={favoritedPhotos}
+          setFavoritedPhotos={setFavoritedPhotos}
+          toggleModal={() => { }}
+          selectedPhoto={selectedPhoto}
+          photos={Object.values(selectedPhoto.similar_photos || {})}
         />
       </div>
-
-
     </div>
   )
 };

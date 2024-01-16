@@ -1,24 +1,24 @@
 import React from 'react';
-import { useState } from 'react';
 import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
-const HomeRoute = ({ toggleModal, selectedPhoto, favoritedPhotos, setFavoritedPhotos, toggleFavorite,topics, photos, setTopicPhotos }) => {
+const HomeRoute = ({ toggleModal, selectedPhoto, favoritedPhotos, setFavoritedPhotos, toggleFavorite, topics, photos, setTopicPhotos }) => {
 
-
-  
   return (
     <div className="home-route">
-      {/* Insert React */}
-      <TopNavigation favoritedPhotos={favoritedPhotos} topics={topics} setTopicPhotos={setTopicPhotos}/>
+      <TopNavigation
+        favoritedPhotos={favoritedPhotos}
+        topics={topics}
+        setTopicPhotos={setTopicPhotos}
+      />
       <PhotoList
-      favoritedPhotos={favoritedPhotos} 
-      setFavoritedPhotos={setFavoritedPhotos} 
-      toggleModal={toggleModal} 
-      selectedPhoto={selectedPhoto}
-      toggleFavorite={toggleFavorite}
-      photos={photos}
+        favoritedPhotos={favoritedPhotos}
+        setFavoritedPhotos={setFavoritedPhotos}
+        toggleModal={toggleModal}
+        selectedPhoto={selectedPhoto}
+        toggleFavorite={toggleFavorite}
+        photos={photos}
       />
     </div>
   );

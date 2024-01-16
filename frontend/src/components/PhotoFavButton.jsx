@@ -1,5 +1,4 @@
-import React, { useCallback, useState } from 'react';
-
+import React, { useState } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
@@ -11,7 +10,6 @@ function PhotoFavButton(props) {
       ? props.favoritedPhotos.filter(photo => photo.id !== props.photo.id)
       : [...props.favoritedPhotos, props.photo];
 
-      console.log('Updated Favorited Photos:', updatedFavoritedPhotos);
     // Update the list of favorited photos
     props.setFavoritedPhotos(updatedFavoritedPhotos);
 
