@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
   const [isActive, setIsActive] = useState(false);
+
+
+  useEffect(() => {
+    // Update the button state when favoritedPhotos prop changes
+    setIsActive(props.favoritedPhotos.some(photo => photo.id === props.photo.id));
+  }, [props.favoritedPhotos, props.photo.id]);
+
   const handleClick = () => {
 
     const updatedFavoritedPhotos = isActive
@@ -19,7 +26,6 @@ function PhotoFavButton(props) {
   return (
     <div className="photo-list__fav-icon" onClick={handleClick} >
       <div className="photo-list__fav-icon-svg"  >
-        {/* Insert React */}
         <FavIcon selected={isActive} />
       </div>
     </div>

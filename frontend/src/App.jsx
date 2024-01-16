@@ -8,7 +8,7 @@ const App = () => {
 
   const { state, toggleModal, setFavoritedPhotos, setTopicPhotos,} = useApplicationData();
 
-  const { isModalVisible, selectedPhoto, favoritedPhotos, topicData, photoData } = state;
+  const { isModalVisible, selectedPhoto, favoritedPhotos, topicData, photoData, toggleFavorite } = state;
 
 
 
@@ -20,6 +20,7 @@ const App = () => {
         selectedPhoto={selectedPhoto}
         favoritedPhotos={favoritedPhotos}
         setFavoritedPhotos={setFavoritedPhotos}
+        toggleFavorite={toggleFavorite}
         topics={topicData}
         photos={photoData}
         setTopicPhotos={setTopicPhotos}
@@ -30,6 +31,7 @@ const App = () => {
           selectedPhoto={selectedPhoto}
           favoritedPhotos={favoritedPhotos}
           setFavoritedPhotos={setFavoritedPhotos}
+          toggleFavorite={toggleFavorite}
         />}
     </div>
   );

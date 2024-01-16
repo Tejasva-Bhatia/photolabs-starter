@@ -4,7 +4,7 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto, favoritedPhotos, setFavoritedPhotos }) => {
+const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto, favoritedPhotos, setFavoritedPhotos, toggleFavorite }) => {
 
   const handleCloseClick = () => {
     closeDisplayModal();
@@ -22,7 +22,8 @@ const PhotoDetailsModal = ({ closeDisplayModal, selectedPhoto, favoritedPhotos, 
           <PhotoFavButton
             photo={selectedPhoto}
             favoritedPhotos={favoritedPhotos}
-            setFavoritedPhotos={setFavoritedPhotos} />
+            setFavoritedPhotos={setFavoritedPhotos}
+            toggleFavorite={toggleFavorite} />
           <img className="photo-details-modal__image" src={selectedPhoto.urls.full}></img>
           <div className="photo-details-modal__header">
             <img className="photo-details-modal__photographer-profile" src={selectedPhoto.user.profile}></img>
